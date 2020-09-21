@@ -104,13 +104,13 @@ export class Session implements SessionInterface {
     };
   } {
     return dropUndefinedKeys({
-      sid: this.sid,
+      sid: `${this.sid}`,
       init: true,
       started: new Date(this.started).toISOString(),
       timestamp: new Date(this.timestamp).toISOString(),
       status: this.status,
       errors: this.errors,
-      did: this.did,
+      did: typeof this.did === 'number' || typeof this.did === 'string' ? `${this.did}` : undefined,
       duration: this.duration,
       attrs: dropUndefinedKeys({
         release: this.release,
