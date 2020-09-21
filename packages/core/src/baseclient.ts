@@ -221,8 +221,6 @@ export abstract class BaseClient<B extends Backend, O extends Options> implement
 
   /** Updates existing session based on the provided event */
   protected _updateSessionFromEvent(session: Session, event: Event): void {
-    console.log('_updateSessionFromEvent');
-
     let crashed = false;
     let errored = false;
     let user_agent;
@@ -503,7 +501,6 @@ export abstract class BaseClient<B extends Backend, O extends Options> implement
           if (isInternalException || !beforeSend || isTransaction) {
             if (!isTransaction) {
               const session = scope && scope.getSession();
-              console.log('BASECLIENT session', session);
               if (session) {
                 this._updateSessionFromEvent(session, finalEvent);
               }
@@ -529,7 +526,6 @@ export abstract class BaseClient<B extends Backend, O extends Options> implement
             }
 
             const session = scope && scope.getSession();
-            console.log('BASECLIENT session', session);
             if (session) {
               this._updateSessionFromEvent(session, finalEvent);
             }

@@ -28,8 +28,6 @@ export class Session implements SessionInterface {
   /** JSDoc */
   // eslint-disable-next-line complexity
   update(context: SessionContext): void {
-    console.log('update session with', context);
-
     if (context.user) {
       if (context.user.ip_address) {
         this.ip_address = context.user.ip_address;
@@ -73,8 +71,6 @@ export class Session implements SessionInterface {
     if (context.status) {
       this.status = context.status;
     }
-
-    console.log('current session', this);
   }
 
   /** JSDoc */
