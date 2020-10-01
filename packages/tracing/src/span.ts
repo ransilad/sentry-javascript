@@ -3,6 +3,7 @@ import { Span as SpanInterface, SpanContext } from '@sentry/types';
 import { dropUndefinedKeys, timestampWithMs, uuid4 } from '@sentry/utils';
 
 import { SpanStatus } from './spanstatus';
+import { Transaction } from './transaction';
 
 /**
  * Keeps track of finished spans for a given transaction
@@ -98,6 +99,11 @@ export class Span implements SpanInterface, SpanContext {
    * List of spans that were finalized
    */
   public spanRecorder?: SpanRecorder;
+
+  /**
+   * @inheritDoc
+   */
+  public transaction?: Transaction;
 
   /**
    * You should never call the constructor manually, always use `hub.startSpan()`.
